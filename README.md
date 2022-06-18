@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<img align="right" width="150" height="150" src="files/arca-logo.svg">
+<img align="right" width="150" height="150" src="files/images/arca-logo.svg">
 
 # Basi di R e R Markdown
 

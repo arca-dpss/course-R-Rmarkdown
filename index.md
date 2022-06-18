@@ -1,6 +1,6 @@
 ---
 course_title: "Basi di R e R Markdown"
-author_name: [Claudio Zandonella](https://claudiozandonella.netlify.app/)
+author_name: Claudio Zandonella
 ---
 
 # Introduzione
@@ -40,8 +40,8 @@ In questo corso di due giornate (totale 16 ore), impareremo le basi della progra
 
 | Giorno | Orario | Aula (CLA)|
 |-------|------|-----|
-| Giovedì 30 giugno | 9:00 - 13:00 e 14:00 - 18:00 | TODO |
-| Venerdì 1 luglio  | 9:00 - 13:00 e 14:00 - 18:00 | TODO |
+| Giovedì 30 giugno | 9:00 - 13:00 e 14:00 - 18:00 | LAB 3D  |
+| Venerdì 1 luglio  | 9:00 - 13:00 e 14:00 - 18:00 | LAB 3D  |
 
 
 # Requisiti
@@ -54,11 +54,12 @@ Consigliamo di installare i seguenti software prima dell'inizio del corso.
 # Materiali
 
 - [TODO: add link to slides]
-- 
 - Introduction to R: Corso per imparare le basi di R
  ([Link](psicostat.github.io/introduction2r/) web version e [PDF](https://psicostat.github.io/Introduction2R/Introduction2R.pdf) version)
 - [TODO: add useful links]
 
 ## Trial link
+
+- questionario valutazione [link](https://forms.gle/6ycuFMdDnyemD4AR6)
 
 [documents/presentation/task3.html](documents/presentation/task3.html)

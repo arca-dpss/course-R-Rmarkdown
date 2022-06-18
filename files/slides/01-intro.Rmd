@@ -1,0 +1,116 @@
+---
+title: "Basi di R e R Markdown"
+subtitle: "01 Introduzione"
+author: "Claudio Zandonella"
+institute: ""
+output:
+  xaringan::moon_reader:
+    css: ["assets/custom-presentation.css", "default-fonts"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+      ratio: '16:9'
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>`
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      tidy=TRUE, tidy.opts = list(width.cutoff = 80),
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Chunk theme
+thm = knitr::knit_theme$get("bclear")
+knitr::knit_theme$set(thm)
+knitr::opts_chunk$set(background = c(.98, .98, 1))
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+## ggplot settings
+theme_set(theme_bw()+
+            theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+tryCatch(
+    devtools::load_all("../../"),
+    error = function(x){
+      devtools::load_all()
+      })
+```
+
+# The Task
+
+--
+
+> Combining datasets to obtain insights
+
+--
+
+<br>
+
+# Case Study 
+
+--
+
+> Evaluating energy consumption at different territorial units
+
+--
+
+<br>
+
+<div style = "padding-left: 250pt">
+  <p>.color-red[Issue:] 
+<div>
+
+---
+class: center, middle
+
+Thanks
+
+
+
+<!-- <br> -->
+
+<!-- <br> -->
+
+<!-- <div style = "width: 400pt; display: inline-block;"> -->
+<!--   <img src="assets/thats-all-folks.gif"/> -->
+<!-- <div/> -->
+<!-- --- -->
+<!-- class: center -->
+
+<!-- <br> -->
+
+<!-- <br> -->
+
+<!-- <div style = "width: 400pt; display: inline-block;"> -->
+<!--   <img src="assets/thats-all-folks.png" style = "width: 100%;"/> -->
+<!-- <div/> -->
+
+

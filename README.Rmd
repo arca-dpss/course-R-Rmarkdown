@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-<img align="right" width="150" height="150" src="files/arca-logo.svg">
+<img align="right" width="150" height="150" src="files/images/arca-logo.svg">
 
 # Basi di R e R Markdown
 

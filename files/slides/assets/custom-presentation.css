@@ -1,0 +1,93 @@
+
+/*----    Title Slide    ----*/
+
+.title-slide {
+  background-image: url("title-background.png");
+  background-size: contain;
+  color: white;
+  vertical-align: bottom!important;
+  padding-bottom: 100px;
+  padding-left: 110px;
+}
+
+.title-slide h1, .title-slide h2, .title-slide h3 {
+    color: #8C3031;
+    text-align: left;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.title-slide h2 {
+  margin-bottom: 30px;
+}
+
+.title-slide .remark-slide-number{
+  display: none;
+}
+
+/*----    Progress Bar    ----*/
+.remark-slide-number {
+  position: inherit;
+  color: transparent;
+}
+
+.remark-slide-number .progress-bar-container {
+  position: absolute;
+  bottom: 0;
+  height: 6px;
+  display: block;
+  left: 0;
+  right: 0;
+}
+
+.remark-slide-number .progress-bar {
+  height: 100%;
+  background-color: #8C3031;
+}
+
+/*----    Slide Theme    ----*/
+
+h1, h2, h3 {
+    color: #8C3031;
+}
+
+a:-webkit-any-link {
+  color: #8C3031;
+}
+
+li, p {
+  font-size: 20pt;
+  color: #403d3d;
+}
+
+/* 50/50 */
+.pull-left-50 {
+  float: left;
+  width: 47%;
+}
+.pull-right-50 {
+  float: right;
+  width: 47%;
+}
+
+/*----    blockquote    ----*/
+
+blockquote {
+  border-left: 5pt solid #8C3031;
+  border-radius: 5pt;
+  padding-left: 10pt;
+}
+
+/*----    text style    ----*/
+
+.color-red {
+  color: #8C3031;
+}
+
+.color-white {
+  color: white;
+}
+
+.size-25 {
+  ont-size: 25pt;
+}
