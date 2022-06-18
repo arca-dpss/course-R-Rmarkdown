@@ -1,0 +1,42 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+
+# Other files types
+
+#---- LaTeX auxiliary files ----
+*.bbl
+*.bcf
+*concordance.tex
+*.lof
+*.log
+*.lot
+*.run.xml
+*.synctex.gz
+*.toc
+*.fff
+*.ttt
+*-tikzDictionary
+
+# paper output
+paper.tex
+paper.pdf
+
+# htlm output
+
+*.docx
+
+
+#---- Project folders ----
+
+# data_raw
+data/
+
+
+#---- old project ----
+old/
+
+# Mac auxiliary files
+.DS_Store
