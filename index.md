@@ -62,4 +62,5 @@ Consigliamo di installare i seguenti software prima dell'inizio del corso.
 
 - questionario valutazione [link](https://forms.gle/6ycuFMdDnyemD4AR6)
 
-[documents/presentation/task3.html](documents/presentation/task3.html)
+[files/slides/01-intro.html](files/slides/01-intro.html)
+
