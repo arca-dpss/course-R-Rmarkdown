@@ -5,7 +5,7 @@ author: "Claudio Zandonella"
 institute: ""
 output:
   xaringan::moon_reader:
-    css: ["assets/custom-presentation.css", "default-fonts"]
+    css: ["assets/custom-presentation.css", "default-fonts", "default"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -42,11 +42,6 @@ knitr::opts_chunk$set(echo = FALSE,
 
 # Console output width
 options(width = 80)
-
-# Chunk theme
-thm = knitr::knit_theme$get("bclear")
-knitr::knit_theme$set(thm)
-knitr::opts_chunk$set(background = c(.98, .98, 1))
 
 # Option KableExtra
 # options(knitr.kable.NA = '')
@@ -173,8 +168,50 @@ ggplot() +
 
 > We are not learning R.....we are learning how to programme
 
+---
+
+# What is R? 
+
+--
+
+- It is not a calculator
+
+--
+
+<br>
+- It is not a statistical software
+
+--
+
+<br>
+
+> **It is a programming Language**
 
 ---
+
+# Programming Language
+
+--
+
+As any language we have:
+
+<br>
+
+--
+
+- Elements
+--
+
+- Rules
+--
+
+- Communicate
+--
+
+- Evolving
+
+---
+
 class: end, center, middle
 
 # Let's staRt
