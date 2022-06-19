@@ -96,6 +96,12 @@ blockquote {
   ont-size: 25pt;
 }
 
-/*----  inverse  ----*/
+/*----  end  ----*/
 
+.end {
+  background-color: #8C3031;
+}
 
+.end h1, .end h2, .end h3 {
+    color: white;
+}
