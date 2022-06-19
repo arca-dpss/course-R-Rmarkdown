@@ -46,7 +46,7 @@ In questo corso di due giornate (totale 16 ore), impareremo le basi della progra
 
 # Requisiti
 
-Consigliamo di installare i seguenti software prima dell'inizio del corso.
+Invitiamo a installare i seguenti software prima dell'inizio del corso.
 
 - R ([https://cran.rstudio.com/](https://cran.rstudio.com/))
 - RStudio ([https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/))

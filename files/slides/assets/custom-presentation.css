@@ -56,8 +56,12 @@ a:-webkit-any-link {
 }
 
 li, p {
-  font-size: 20pt;
+  font-size: 18pt;
   color: #403d3d;
+}
+
+li {
+  padding-bottom: 8px;
 }
 
 /* 50/50 */
@@ -91,3 +95,7 @@ blockquote {
 .size-25 {
   ont-size: 25pt;
 }
+
+/*----  inverse  ----*/
+
+

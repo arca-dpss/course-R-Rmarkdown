@@ -1,6 +1,6 @@
 ---
-title: "Basi di R e R Markdown"
-subtitle: "01 Introduzione"
+title: "Elements of R e R Markdown"
+subtitle: "01 Introduction"
 author: "Claudio Zandonella"
 institute: ""
 output:
@@ -17,6 +17,8 @@ output:
           <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
           </div>
         </div>`
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -64,53 +66,116 @@ tryCatch(
       })
 ```
 
-# The Task
 
---
-
-> Combining datasets to obtain insights
-
---
-
-<br>
-
-# Case Study 
-
---
-
-> Evaluating energy consumption at different territorial units
+# The Course
 
 --
 
 <br>
 
-<div style = "padding-left: 250pt">
-  <p>.color-red[Issue:] 
-<div>
+Aim:
+
+> Learning R and R Markdown
 
 ---
-class: center, middle
 
-Thanks
+# The Course
+
+<br>
+
+Aim:
+
+> Learning R and R Markdown... at least we try
+
+--
+
+<br>
+
+Materials and Infos:
+
+> https://arca-dpss.github.io/course-R-Rmarkdown/
+
+---
+
+# Why R?
+
+--
+
+- open science (reproducibility)
+- software open-source
+
+--
+
+```{r, fig.width= 5, fig.asp=.6, dpi = 300, out.width="60%"}
+
+colors <- c("SPSS" = "#ED174B", "R" = "#4AA4DE")
 
 
+ggplot() +
+  geom_function(aes(color = "SPSS"),
+                fun = function(x) log((x + .1)*10, base = 5) *20,
+                size = 2, linetype = "longdash") +
+  geom_function(aes(color = "R"),
+                fun = function(x) 3^(x), size = 2) +
+  xlim(0, 4.5) +
+  labs(x = "Learning Time",
+       y = "What we can do",
+       color = NULL) +
+  scale_color_manual(values = colors) +
+  theme(axis.ticks = element_blank(),
+        axis.text = element_blank(),
+        legend.position = "top",
+        legend.background = element_rect(fill="transparent"))
+```
 
-<!-- <br> -->
+---
+# Why ~~R~~ Programming?
 
-<!-- <br> -->
 
-<!-- <div style = "width: 400pt; display: inline-block;"> -->
-<!--   <img src="assets/thats-all-folks.gif"/> -->
-<!-- <div/> -->
-<!-- --- -->
-<!-- class: center -->
+<br>
 
-<!-- <br> -->
+--
 
-<!-- <br> -->
+- It's like magic
+--
 
-<!-- <div style = "width: 400pt; display: inline-block;"> -->
-<!--   <img src="assets/thats-all-folks.png" style = "width: 100%;"/> -->
-<!-- <div/> -->
+- We are leaving in 2022 (info-sphere)
+--
 
+- Let computers do the boring stuff
+--
+
+- Programmers are lazy
+--
+
+- Good for OCD and Dopamine circuit
+--
+
+<br>
+
+<br>
+
+> We are not learning R.....
+
+---
+
+# Why ~~R~~ Programming?
+
+<br>
+
+- It's like magic
+- We are leaving in 2022 (info-sphere)
+- Let computers do the boring stuff
+- Programmers are lazy
+- Good for OCD and Dopamine circuit
+
+<br>
+
+> We are not learning R.....we are learning how to programme
+
+
+---
+class: inverse, center, middle
+
+# Let's staRt
 
