@@ -1,0 +1,626 @@
+---
+title: "Elements of R e R Markdown"
+subtitle: "02 R Data Structures"
+author: "Claudio Zandonella"
+institute: ""
+output:
+  xaringan::moon_reader:
+    css: ["assets/custom-presentation.css", "default-fonts", "default"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+      ratio: '16:9'
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>`
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+## ggplot settings
+theme_set(theme_bw()+
+            theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+tryCatch(
+    devtools::load_all("../../"),
+    error = function(x){
+      devtools::load_all()
+      })
+```
+class: size-small
+# Math Operators
+
+```{r}
+names_function <- c("Addition", "Subtraction", "Multiplication", "Division",
+                    "Remainder from division", "Integer Division", "Power",
+                    "Absolute value","Sign", "Square Root", 
+                    "Logarithm (natural)", "Exponential", "Trigonometriche",
+                    "Fattoriale", "Coefficiente binomiale") 
+
+math_operators <- data.frame(
+    formula = c(sprintf("x %s y", c("+", "-", "*", "/", "%%", "%/%", "^")),
+                sprintf("%s(x)", c("abs", "sign", "sqrt", "log", "exp")),
+                paste0(sprintf("%s(x)", c("sin", "cos", "tan", "asin", "acos", "atan")),
+                       collapse = "<br />"),
+                "factorial(x)", "choose(n, k)"),
+    name = names_function,
+    example = c(sprintf("> %s <br />[1] %s",
+                        c("5 + 3", "7 - 2", "4 * 3", "8 / 3", "7 %% 5", "7 %/% 5", 
+                          "3 ^ 3","abs(3-5^2)", "sign(-8)", "sqrt(25)", "log(10)", "exp(1)"),
+                        c("8", "5", "12", "2.666667", "2", "1", "27","22", "-1", "5",
+                          "2.302585", "2.718282")),
+                ">sin(pi/2) <br />[1]1 <br />>cos(pi/2) <br />[1]6.123234e-17",
+                c(sprintf("> %s <br />[1] %s",
+                          c("factorial(6)", "choose(5,3)"),
+                          c("720", "10"))))
+  )
+```
+
+.pull-left-50[
+```{r}
+kable(math_operators[1:7, ], col.names = c("Function", "Name", "Example"), escape = FALSE, format = "html") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+]
+
+.pull-right-50[
+```{r}
+kable(math_operators[8:12, ], col.names = c("Function", "Name", "Example"), escape = FALSE, format = "html", row.names = FALSE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+]
+
+---
+class: size-small
+# Relational and Logical Operators
+
+.pull-left-50[
+```{r}
+names_function <- c("Equal to", "Not equal to", "Greater", "Greater or equal", 
+                    "Less", "Less or equal", "Inclusion") 
+
+
+logical_operators <- data.frame(
+  formula = sprintf("x %s y", c("==", "!=", ">", ">=", "<", "<=", "%in%")),
+  name = names_function,
+  example = sprintf("> %s <br />[1] %s",
+                    c("5 == 3", "7 != 2", "4 > 3", "-2 >= 3", "7 < 5", "7 <= 7", "5 %in% c(3, 5, 8)"),
+                    c("FALSE", "TRUE", "TRUE", "FALSE", "FALSE", "TRUE", "TRUE")))
+
+
+kableExtra::kable(logical_operators, col.names = c("Function", "Name", "Example"),
+                  escape = FALSE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = FALSE)
+```
+]
+
+.pull-right-50[
+```{r}
+
+names_function <- c("And", "Or (inclusive)", "Or (disgiuntive)", "Negation") 
+
+logical_operators <- data.frame(
+  formula = c(sprintf("x %s y", c("&", "|")), "xor(x, y)", "!x"),
+  name = names_function,
+  example = c(sprintf("> %s <br />[1] %s<br />> %s <br />[1] %s",
+                    c("TRUE & TRUE", "TRUE & FALSE", "xor(TRUE, FALSE)"),
+                    c("TRUE", "FALSE", "TRUE"),
+                    c("TRUE & FALSE", "FALSE & FALSE", "xor(TRUE, TRUE)"),
+                    c("FALSE", "FALSE", "FALSE")), "> !TRUE <br />[1] FALSE"))
+
+
+kableExtra::kable(logical_operators, col.names = c("Function", "Name", "Example"),
+                  escape = FALSE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = FALSE)
+```
+
+]
+
+
+---
+class: size-small
+
+# Operators Order
+
+.pull-left-50[
+1. Math operators<br>(e.g., `^`, `*`, `/`, `+`, `-`, etc.)
+2. Relational operators<br>(e.g., `<`, `>`, `<=`, `>=`, `==`, `!=`)
+3. Logical operators<br>(e.g., `!`, `&`, `|`)
+]
+
+.pull-right-50[
+1. `^` (Power)
+2. `%%` (remainder from division) and<br>`%/%` (integer division) 
+3. `*` (multiplication) and<br>`/`(division)
+4. `+` (addition) and<br>`-`(subraction)
+]
+
+<div style="padding-top:250pt;">
+
+<center><blockquote style ="width: fit-content;">Use parenthesis "`(...)`"!</blockquote></center>
+
+</div>
+
+---
+class: size-small
+# Vectors
+
+
+.pull-left-50[
+### Creating
+
+```{r, eval=FALSE, echo=TRUE}
+name_vector <- c(...)
+```
+```{r, echo=TRUE}
+x <- c(2, 5, 1, 3, 7)
+x
+
+# Create a sequence with '<from>:<to>'
+y <- 1:8
+y
+```
+]
+
+.pull-right-50[
+### Selecting
+```{r, eval=FALSE, echo=TRUE}
+name_vector[<index-position>]
+```
+
+
+```{r, echo = TRUE}
+# Position index
+x[c(2, 5, 1)]
+
+# Logical condition
+x[x >= 5]
+
+# Removing 
+x[- c(1, 3)]
+
+# Editing
+x[1] <- 9999
+x
+```
+]
+
+---
+class: size-small
+# Vectors
+
+.pull-left-50[
+### Types
+
+```{r, echo=TRUE}
+# Character
+c("a", "b", "c")
+
+# Double
+c(3.5, 2, 9.34)
+
+# Integer
+c(1L, 2L, 3L)
+
+# Logical
+c(TRUE, FALSE, FALSE)
+```
+]
+
+.pull-right-50[
+### Function Families
+
+- `is.*()` test if vector of the correct type
+- `as.*()` coerces object to given type
+
+### Special Values
+
+- `NULL`, the null object of length 0 (**important** `is.null()`)
+- `NA`, logical of length 1 indicating a missing value (**important** `is.na()`)
+- `Inf` (`-Inf`), numeric value indicating too large (or too small values)
+- `NaN`, numeric value indicating a number that can not be represented
+
+]
+---
+class: size-small
+
+# Common Functions
+
+.pull-left-50[
+- `length()`, get object length
+    ```{r, echo = TRUE}
+    length(c("a", "b", "c"))
+    ```
+- `seq()`, sequence generation
+    ```{r, echo = TRUE}
+    seq(from = 0, to = 10, by = 2)
+    ```
+- `rep()`, replicate elements
+    ```{r, echo = TRUE}
+    rep(c("a", "b", "c"), each = 2)
+    ```
+]
+
+.pull-right-50[
+- `sort()`, sort vector values
+    ```{r, echo = TRUE}
+    sort(c(6,3,8,1,3))
+    ```
+- `order()`, return permutation which rearranges
+    ```{r, echo = TRUE}
+    order(c(6,3,8,1,3))
+    ```
+- `order()`, get position of `TRUE` values
+    ```{r, echo = TRUE}
+    which(c(6,3,8,1,3) == 3)
+    ```
+]
+
+---
+class: size-small
+# Factor
+
+.pull-left-50[
+### Creating
+
+```{r, eval=FALSE, echo=TRUE}
+factor(x = , levels = , ordered = FALSE)
+```
+```{r, echo=TRUE}
+# Unordered factor
+x <- factor(c("a", "b", "a", "c"))
+x
+
+# Ordered factor, see also ?ordered()
+y <- factor(
+  c("IV", "II", "I", "III"),
+  levels = c("I", "II", "III", "IV"),
+  ordered = TRUE)
+y
+```
+]
+.pull-right-50[
+### Redefining Levels  
+```{r, echo=TRUE}
+levels(x)
+
+levels(x) <- c("A", "B", "C")
+x
+```
+
+### Underline Structure
+```{r, echo = TRUE}
+str(x)
+as.numeric(x)
+```
+]
+
+---
+class: size-small
+# Matrices
+
+.pull-left-50[
+### Creating
+
+```{r, eval=FALSE, echo=TRUE}
+matrix(data, nrow = , ncol = , byrow = FALSE)
+```
+```{r, echo=TRUE}
+X <- matrix(1:12, ncol = 4)
+X
+```
+
+### Dimension
+```{r, echo=TRUE}
+nrow(X)
+ncol(X)
+dim(X)
+```
+]
+.pull-right-50[
+
+### Selecting
+
+```{r, eval=FALSE, echo=TRUE}
+name_matrix[<row-index>, <col-index>]
+```
+
+```{r, echo = TRUE}
+# Single element
+X[2, 3]
+
+# Entire row/column
+X[3, ]
+X[ , 2]
+
+# Subsetting 
+X[1:2, 3:4]
+```
+
+]
+
+---
+class: size-small
+# Matrices
+
+.pull-left-50[
+### Rows and Cols Names  
+
+```{r, echo=TRUE}
+# Assigning  names
+colnames(X) <- c("A", "B", "C", "D")
+rownames(X) <- c("a", "b", "c")
+
+X
+
+# Selecting by names
+X[ , "A"]
+```
+]
+
+.pull-right-50[
+### Operations
+
+```{r}
+names_function <- c("Bind matrices by rows",
+                    "Bind matrices by columns", 
+                    "Matrix transpose",
+                    "Get diagonal elements",
+                    "Determinant matrix",
+                    "Inverse matrix",
+                    "Elementwise sum",
+                    "Elementwise difference",
+                    "Elementwise product",
+                    "Elementwise division",
+                    "Matrix product")
+formula <- sprintf("X %s Y", c("+", "-", "*", "/"))
+
+
+matrix_operators <- data.frame(formula = c(
+  sprintf("%s(X, Y)", c("cbind", "rbind")),
+  sprintf("%s(X)", c("t", "diag", "det", "solve")),
+  formula, "X %*% Y"),
+  name = names_function)
+
+kableExtra::kable(matrix_operators, col.names = c("Functions", "Description"),
+                  escape = TRUE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = FALSE)
+```
+]
+---
+class: size-small
+# Dataframe
+
+.pull-left-50[
+### Creating
+
+```{r, eval=FALSE, echo=TRUE}
+data.frame(<var-1> = ...,
+           <var-2> = ...,
+           stringsAsFactors = FALSE)
+
+```
+```{r, echo=TRUE}
+df <-  data.frame(
+  name = c("A", "B", "C", "D"),
+  x = factor(c(0,1,0, 1)),
+  y = 1:4)
+
+df
+```
+
+]
+.pull-right-50[
+### Structure
+
+```{r, echo=TRUE}
+str(df)
+```
+
+### Summary
+```{r, echo=TRUE}
+summary(df)
+```
+
+]
+
+---
+class: size-small
+# Dataframe
+
+.pull-left-50[
+### Selecting
+
+```{r, eval=FALSE, echo=TRUE}
+name_df[<row-index>, <col-index>]
+```
+
+```{r, echo = TRUE}
+# Single value
+df[2, 1]
+
+# Entire rows/columns
+df[3:4, ]
+
+df[ , 2:3]
+```
+]
+
+.pull-right-50[
+
+<br>
+
+```{r, echo = TRUE}
+# By colnames
+df[, c("name", "y")]
+
+df$name
+
+# Logical conditions
+df[df$y > 1, c("name", "y")]
+```
+]
+---
+class: size-small
+# Dataframe
+
+.pull-left-50[
+### Rows and Cols Names  
+
+```{r, echo=TRUE}
+# Assigning  names
+colnames(df) <- c("NAME", "X", "Y")
+rownames(df) <- c("a", "b", "c", "d")
+
+df
+```
+]
+.pull-right-50[
+### Operations
+```{r}
+names_function <- c("Number of rows",
+                    "Number of columns",
+                    "Create new column",
+                    "Bind by columns",
+                    "Bind by rows", 
+                    "Return first rows",
+                    "Return last rows",
+                    "Struttura del dataframe",
+                    "Summary del dataframe")
+
+formula_names <-c("nrow", "ncol", "head", "tail", "str", "summary")
+
+df_operators <- data.frame(formula = c(
+  sprintf("%s(df)", formula_names[1:2]),
+  "df$nome_var &lt;- var_values",
+  "cbind(df, dati)",
+  "rbind(df, dati)",
+  sprintf("%s(df)", formula_names[3:6])),
+  name = names_function)
+
+kableExtra::kable(df_operators, col.names = c("Function", "Description"),
+                  escape = FALSE) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = FALSE)
+```
+]
+
+---
+class: size-small
+# List
+
+.pull-left-50[
+### Creating
+
+```{r, eval=FALSE, echo=TRUE}
+list(<item-1> = ...,
+     <item-2> = ...,
+     ...)
+
+```
+```{r, echo=TRUE}
+my_list <-  list(my_vector = x,
+                 my_matrix = X,
+                 my_df = df)
+
+# Number of items
+length(my_list)
+
+# Item names
+names(my_list)
+```
+
+]
+.pull-right-50[
+### Structure
+
+```{r, echo=TRUE}
+str(my_list, max.level = 2)
+```
+
+### Add element
+```{r, echo=TRUE, eval= FALSE}
+my_list$new_item <- "Hello World!"
+
+c(my_list, new_item = "Hello World!")
+```
+
+]
+
+---
+class: size-small
+# List
+
+.pull-left-50[
+### Selecting (as list)
+
+```{r, eval=FALSE, echo=TRUE}
+list_name[<name or position-index>]
+```
+```{r, echo=TRUE}
+my_list[1]
+
+my_list["my_vector"]
+
+class(my_list[1])
+```
+
+]
+.pull-right-50[
+### Selecting (extract elementk)
+
+```{r, eval=FALSE, echo=TRUE}
+list_name[[<name or position-index>]]
+
+list_name$<name>
+```
+```{r, echo=TRUE}
+my_list[[1]]
+
+my_list[["my_vector"]]
+
+class(my_list$my_vector)
+```
+
+]
+
+
+---
+class: end, center, middle
+
+# Thanks!
