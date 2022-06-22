@@ -1,0 +1,297 @@
+---
+title: "Elements of R e R Markdown"
+subtitle: "03 Functions"
+author: "Claudio Zandonella"
+institute: ""
+output:
+  xaringan::moon_reader:
+    css: ["assets/custom-presentation.css", "default-fonts", "default"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+      ratio: '16:9'
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>`
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+## ggplot settings
+theme_set(theme_bw()+
+            theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+tryCatch(
+    devtools::load_all("../../"),
+    error = function(x){
+      devtools::load_all()
+      })
+```
+class: size-small
+# Defining Functions
+
+.pull-left-50[
+```{r, echo = TRUE, eval = FALSE}
+name_function <- function(<argument-1>, 
+                          <argument-2>, 
+                          ...){
+  
+  <body-function>
+    
+  return(<result>)
+}
+```
+
+
+```{r, echo = TRUE}
+greetings <- function(name){
+  
+  res <- paste("Hello", name)
+  
+  return(res)
+}
+
+greetings("Claudio")
+```
+
+]
+
+.pull-right-50[
+
+### Arguments
+
+- `function(x){...}`, argument `x` is require with not default value
+- `function(x = 0){...}`, argument `x` is require with default value `0`
+- `function(...){...}`, argument `...` allows arbitrary number of arguments
+
+### Interactive
+
+- `cat()` and `print()`, print objects in console
+- `readline(prompt = "...")`, get user's response
+- `menu(<choices>)`, user select answer from menu
+
+]
+
+---
+class: size-small
+# Conditional Programming
+
+.pull-left-50[
+### If statement
+
+```{r, echo = TRUE, eval = FALSE}
+if (<test>) {
+  <body>
+}
+```
+
+```{r, echo = TRUE}
+is_negative <- function(x){
+  
+  if (x < 0) {
+    print(paste(x, "is negative"))
+  }
+}
+
+is_negative(-2)
+```
+]
+
+.pull-right-50[
+### If else statement
+
+```{r, echo = TRUE, eval = FALSE}
+if (<test>) {
+  <body>
+} else {
+  <body>
+}
+```
+
+```{r, echo = TRUE}
+tell_sign <- function(x){
+  
+  if (x < 0) {
+    print(paste(x, "is negative"))
+  } else {
+    print(paste(x, "is possitive"))
+  }
+}
+
+is_negative(2)
+```
+]
+
+---
+class: size-small
+# Iterative Programming
+
+.pull-left-50[
+### For loop
+
+```{r, echo = TRUE, eval = FALSE}
+for (i in c(...)) {
+    <body>
+}
+```
+
+```{r, echo = TRUE}
+call_friends <- function(friends){
+  for( friend in friends){
+    cat("Hello ", friend, "!\n", sep = "")
+  }
+}
+
+call_friends(
+  friends = c("Emy", "John", "Mat")
+)
+```
+]
+
+.pull-right-50[
+### While loop
+
+```{r, echo = TRUE, eval = FALSE}
+while (<test>) {
+    <body>
+}
+```
+
+```{r, echo = TRUE}
+countdown <- function(count){
+  
+  while(count > 0){
+    cat(count, "\n")
+    count <- count - 1
+  }
+  cat("Start!\n")
+}
+
+countdown(count = 3)
+```
+]
+
+---
+class: size-small
+# Apply Family
+
+.pull-left-50[
+```{r, echo = TRUE, eval = FALSE}
+apply(X = , MARGIN = , FUN = )
+```
+
+```{r, echo = TRUE}
+(X <- matrix(1:12, ncol = 4))
+
+# By rows
+apply(X, MARGIN = 1, FUN = sum)
+
+# By columns
+apply(X, MARGIN = 2, FUN = sum)
+
+# Custom function
+apply(X, MARGIN = 1, function(x){
+        round(sd(x)/mean(x), 2) 
+      })
+```
+]
+
+.pull-right-50[
+### Other
+
+- `tapply()`, apply a function to each group of values given by a combinations of factors
+- `lapply()`, apply a function over all elements of a lists (return a list)
+- `sapply()`, apply a function over all elements of a lists (return a vector or a list)
+- `vapply()`, apply a function over all elements of a lists (return a vector)
+- `replicate()`, repeatedly apply a function.
+]
+
+---
+class: size-small
+# Probability Distributions
+
+.pull-left-50[
+### Normal Disribution
+
+- `dnorm(x, mean = 0, sd = 1)`, get the density given the quantile 
+- `pnorm(q, mean = 0, sd = 1)`, get the probability given the quantile
+- `qnorm(p, mean = 0, sd = 1)`, get the quantile given the probability 
+- `rnorm(n, mean = 0, sd = 1)`, sample `n` values 
+
+```{r, echo = TRUE}
+dnorm(0, mean = 0, sd = 1)
+pnorm(0, mean = 0, sd = 1)
+qnorm(0, mean = 0, sd = 1)
+rnorm(0, mean = 0, sd = 1)
+```
+]
+
+.pull-right-50[
+### Other Distributions
+
+```{r}
+dist_fun <- sprintf('<code class="remark-inline-code">*%s()</code>', 
+                    c("binom", "pois", "unif", "chisq", "t", "f", "gamma"))
+
+dist_name <- sprintf('%s', 
+                    c("Binomial", "Poisson", "Uniform", "Chi-Square", 
+                      "Student-t", "F", "Gamma"))
+  
+data_table <- data.frame(
+  discrete = c(paste0(dist_fun, ", ", dist_name)[1:2], rep(" ", 3)),
+  continuous = paste0(dist_fun, ", ", dist_name)[3:7]
+)
+
+kable(data_table, col.names = c("Discrete", "Continuous"), escape = FALSE, format = "html") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+### Randomness
+
+```{r, echo = TRUE, eval = FALSE}
+# Random Number Generation
+set.seed(seed = <value>)
+
+# Smaple and permutations
+sample(x = , size = , replace = , prob = )
+
+```
+]
+
+
+---
+class: end, middle, center
+
+# Thanks!

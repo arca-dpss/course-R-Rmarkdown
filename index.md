@@ -57,6 +57,7 @@ Invitiamo a installare i seguenti software prima dell'inizio del corso.
 
 - [01-Introduction](files/slides/01-intro.html)
 - [02-R-data-structures](files/slides/02-R-data-structures.html)
+- [03-R-functions](files/slides/02-R-functions.html)
 
 ### Books
 - Introduction to R: Corso per imparare le basi di R
