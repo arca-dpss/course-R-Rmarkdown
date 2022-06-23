@@ -61,7 +61,7 @@ Invitiamo a installare i seguenti software prima dell'inizio del corso.
 
 ### Books
 - Introduction to R: Corso per imparare le basi di R
- ([Link](psicostat.github.io/introduction2r/) web version e [PDF](https://psicostat.github.io/Introduction2R/Introduction2R.pdf) version)
+ ([Link](https://psicostat.github.io/Introduction2R/) web version e [PDF](https://psicostat.github.io/Introduction2R/Introduction2R.pdf) version)
 
 ### Other Links
 - [TODO: add useful links]
