@@ -1,0 +1,275 @@
+---
+title: "Elements of R e R Markdown"
+subtitle: "04 Data-Analysis"
+author: "Claudio Zandonella"
+institute: ""
+output:
+  xaringan::moon_reader:
+    css: ["assets/custom-presentation.css", "default-fonts", "default"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+      ratio: '16:9'
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>`
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+## ggplot settings
+theme_set(theme_bw()+
+            theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+tryCatch(
+    devtools::load_all("../../"),
+    error = function(x){
+      devtools::load_all()
+      })
+```
+class: size-small
+# Working Session
+
+.pull-left-50[
+
+### Environment
+
+- `ls()`, list all objects in the environment 
+- `rm(<name_object>)`, remove object from the environment 
+- `rm(list = ls())`, remove all objects from the environment
+
+> Use RStudio Projects!
+
+### Libraries
+
+- `install.packages("<package-name>")`, install package
+- `library("<package-name")`, load package
+- `<package_name>::<function>()`, use function without loading package
+
+]
+
+.pull-right-50[
+
+### Working Directory
+
+- `getwd()`, get absolute filepath
+- `setwd()`, set the working directory in the session
+
+### Paths
+
+- Favour **Relative path** instead of **Absolute path**.
+- Use `"/"` (forward slash) to indicate paths
+- `"./"` current working directory
+- `"../"` parent directory
+
+### Help!....I need somebody, Help!
+
+- `?<name_function>()`, get function documentation
+- `??<name>`, search for matches in documentation
+
+]
+
+---
+
+class: size-small
+# Managing Data
+
+<br>
+
+```{r}
+format <- sprintf('<bold><code class="remark-inline-code">.%s()</code></bold>', 
+                  c("rda", "rds", "csv", "csv", "txt", "xlsx"))
+
+load <- sprintf('<code class="remark-inline-code">%s</code>', 
+                c('load("&lt;data&gt;.rda")', 
+                  'readRDS("&lt;data&gt;.rds")',
+                  'read.csv("&lt;data&gt;.csv")', 
+                  'read.csv2()',
+                  'read.table("&lt;data&gt;.txt", sep = )',
+                  'readxl::read_xlsx("&lt;data&gt;.xlsx")'))
+
+
+save <- sprintf('<code class="remark-inline-code">%s</code>', 
+                c('save(&lt;object&gt;, file = "&lt;data&gt;.rda")', 
+                  'saveRDS(&lt;object&gt;, file = "&lt;data&gt;.rds")',
+                  'write.csv(&lt;object&gt;, file = "&lt;data&gt;.csv")', 
+                  'write.csv2(&lt;object&gt;, file = "&lt;data&gt;.csv")',
+                  'write.table(&lt;object&gt;, file = "&lt;data&gt;.txt")',
+                  'really??'))
+
+format[4] <-  " "
+load[3] <- paste0(load[3], ' for <code class="remark-inline-code">,</code> as separator and <code class="remark-inline-code">.</code> as decimal separator')
+load[4] <- paste0(load[4], ' for <code class="remark-inline-code">;</code> as separator and <code class="remark-inline-code">,</code> as decimal separator')
+
+data_table <- data.frame(
+  format = format,
+  load = load,
+  save = save
+)
+
+kable(data_table, col.names = c("Format", "Read", "Write"), escape = FALSE, format = "html") %>%
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  column_spec(2, width = "12cm") %>% 
+  column_spec(3, width = "13cm")
+```
+
+
+---
+class: size-small
+
+# Descriptive Analysis
+
+<br>
+
+.pull-left-50[
+- `summary()`, summary information
+- `mean()`, arithmetic mean 
+- `median()`, median value
+- `quantile()`, sample quantiles
+- `max()`, maximum value
+- `min()`, minimum value
+- `range()`, range of values
+- `sd()`, standard deviation 
+- `var()`, variance
+- `cor()`, correlation
+- `cov()`, covariance
+- `table()`, frequency table
+]
+
+.pull-right-50[
+
+### Utility Functions
+- `paste()`, concatenate string
+- `paste0()`, concatenate string
+- `head()`, return first rows
+- `cumsum()`, cumulative sum
+- `cumprod()`, cumulative product
+- `round()`, rounding numbers
+- `scale()`, scaling and centering values
+- `unique()`, get unique elements
+- `duplicated()`, determine duplicated elements
+- `complete.cases()`, find complete cases
+]
+
+---
+class: size-small
+# Plots
+
+.pull-left-50[
+- `plot(x, y, ...)`, scatter plot
+- `plot(x, y, type = "l",...)`, line plot
+- `barplot(height, ...)`, barplot
+- `hist(x, ...)`, histogram
+- `boxplot(formula, ...)` boxplot
+- `plot(density(x, ...))`, kernel density
+- `pairs()`, matrices of scatter plots
+
+### Plot Options
+
+- `col`, color of lines and points 
+- `main`, main plot title
+- `xlab` / `ylab`, label for x/y axis
+- `xlim` / `ylim`, limits for x/y axis
+- `legend()`, add legend
+- `par(mfrow = c(<n-rows>, <n-cols>))`, <br>define plots grid
+
+]
+
+.pull-right-50[
+```{r}
+data(mtcars)
+x <- 1:10/10
+y <-  2 * x + rnorm(10)
+
+par(mfrow = c(3, 2))
+
+plot(mtcars$mpg, mtcars$hp, main = "plot(mtcars$mpg, mtcars$hp)")
+plot(x, y, type = "l", main = 'plot(x, y, type = "l")')
+barplot(table(mtcars$cyl), xlab = "cyl", main = 'barplot(table(mtcars$cyl), xlab = "cyl")')
+boxplot(mpg ~ cyl, data = mtcars, main = 'boxplot(mpg ~ cyl, data = mtcars)')
+hist(mtcars$hp, main = 'hist(mtcars$hp)')
+plot(density(mtcars$hp), main = 'plot(density(mtcars$hp))')
+
+par(mfrow = c(1, 1))
+
+
+```
+
+]
+
+---
+class: size-small
+# Statistics
+
+.pull-left-50[
+### Tests
+- `cor.test()`, test correlation
+- `t.test()`, Student's t-test
+- `wilcox.test()`, Wilcoxon rank test
+- `fisher.test()`, Fisher's exact test
+- `chisq.test()`, Pearson's chi-squared test 
+- `shapiro.test()`, normality Test
+
+### Models
+
+- `lm()`, fit linear models
+- `glm()`, fit generalized linear models
+- `anova()`, compute analysis of variance
+]
+
+.pull-right-50[
+### Formula ~
+
+`<outcome> ~ <predictors>`
+
+- `1` add intercept term
+- `a + b` additive effect
+- `a:b` interaction effect
+- `a*b` interaction and lower terms
+- `(a + b + ...)^n` limit to interaction of grade `n`
+- `- a` remove term
+
+### Contrasts
+
+- `contr.treatment()`, dummy coding 
+- `contr.sum()`, sum-to-zero contrasts
+- `contr.poly()`, orthogonal polynomial contrasts
+- `contr.helmert()`, Helmert contrasts
+]
+
+---
+class: end, middle, center
+
+# Thanks!
