@@ -53,15 +53,17 @@ Invitiamo a installare i seguenti software prima dell'inizio del corso.
 
 # Materiali
 
-### Slide
+### Slides
 
 - [01 Introduction](files/slides/01-intro.html)
 
-#### R
+R:
 
 - [02 Data Structures](files/slides/02-R-data-structures.html)
 - [03 Functions](files/slides/03-R-functions.html)
 - [04 Data Analysis](files/slides/04-R-data-analysis.html)
+
+R Markdown:
 
 ### Books
 - Introduction to R: Corso per imparare le basi di R
