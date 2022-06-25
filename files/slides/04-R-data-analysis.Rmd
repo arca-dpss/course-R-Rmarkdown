@@ -1,6 +1,6 @@
 ---
-title: "Elements of R e R Markdown"
-subtitle: "04 Data-Analysis"
+title: "04 Data-Analysis"
+subtitle: "Elements of R e R Markdown"
 author: "Claudio Zandonella"
 institute: ""
 output:

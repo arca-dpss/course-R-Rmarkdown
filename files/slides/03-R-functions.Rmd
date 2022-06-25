@@ -1,6 +1,6 @@
 ---
-title: "Elements of R e R Markdown"
-subtitle: "03 Functions"
+title: "03 Functions"
+subtitle: "Elements of R e R Markdown"
 author: "Claudio Zandonella"
 institute: ""
 output:
