@@ -1,6 +1,6 @@
 ---
 title: "Elements of R e R Markdown"
-subtitle: "04 Tidyverse"
+subtitle: "05 Tidyverse"
 author: "Claudio Zandonella"
 institute: ""
 output:
