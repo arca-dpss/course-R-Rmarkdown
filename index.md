@@ -62,15 +62,36 @@ R:
 - [02 Data Structures](files/slides/02-R-data-structures.html)
 - [03 Functions](files/slides/03-R-functions.html)
 - [04 Data Analysis](files/slides/04-R-data-analysis.html)
+- [05 Tidyverse](files/slides/05-R-tidyverse.html)
 
 R Markdown:
 
 ### Books
-- Introduction to R: Corso per imparare le basi di R
+
+- *“Introduction to R: Corso per imparare le basi di R”* by Claudio Zandonella and Filippo Gambarota
  ([Link](https://psicostat.github.io/Introduction2R/) web version e [PDF](https://psicostat.github.io/Introduction2R/Introduction2R.pdf) version)
+- *“R Markdown Cookbook”* by Yihui Xie, Christophe Dervieux, and Emily Riederer ([link](https://bookdown.org/yihui/rmarkdown-cookbook/))
+
+Other Books on R
+
+- *“Hands-On Programming”* with R by Garrett Grolemund ([link](https://rstudio-education.github.io/hopr/))
+- *“R for Data Science”* by Hadley Wickham and Garrett Grolemund ([link](https://r4ds.had.co.nz/))
+- *“R Packages”* by Hadley Wickham ([link](https://r-pkgs.org/))
+- *“Advanced R”* by Hadley Wickham ([link](https://adv-r.hadley.nz/))
+
+Other Books on R Markdown
+
+- *“papaja: Reproducible APA manuscripts with R Markdown”* by Frederik Aust and Marius Barth ([link](http://frederikaust.com/papaja_man/))
+- *“bookdown: Authoring Books and Technical Documents with R Markdown”* by Yihui Xie ([link](https://bookdown.org/yihui/bookdown/))
+
 
 ### Other Links
+
+- RStudio Cheatsheets ([link](https://www.rstudio.com/resources/cheatsheets/))
+- Overleaf Documentation ([link](https://www.overleaf.com/learn))
+
 - [TODO: add useful links]
+
 - Questionario valutazione [link](https://forms.gle/6ycuFMdDnyemD4AR6)
 
 

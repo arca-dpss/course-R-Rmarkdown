@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Elements of R e R Markdown</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Claudio Zandonella" />
+    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
+    <link rel="stylesheet" href="assets/custom-presentation.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Elements of R e R Markdown
+]
+.subtitle[
+## 04 Tidyverse
+]
+.author[
+### Claudio Zandonella
+]
+
+---
+
+
+
+
+# Tidyverse
+
+.pull-left-70[
+&lt;img src="images/tidyverse-single.png" width="480" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right-30[]
+
+---
+
+# Tidyverse
+
+.pull-left-70[
+&lt;img src="images/tidyverse-all.png" width="480" style="display: block; margin: auto;" /&gt;
+
+]
+
+--
+
+.pull-right-30[
+&lt;img src="images/r4ds-cover.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+https://r4ds.had.co.nz/
+]
+
+---
+class: size-small
+# Data Wrangling
+
+.pull-left-50[
+### tibble 
+
+- `tibble()`
+- `as_tibble()`
+
+
+```r
+as_tibble(mtcars)
+```
+&lt;PRE class="fansi fansi-output"&gt;&lt;CODE&gt;## &lt;span style='color: #555555;'&gt;# A tibble: 32 × 11&lt;/span&gt;
+##     mpg   cyl  disp    hp  drat    wt
+##   &lt;span style='color: #555555; font-style: italic;'&gt;&amp;lt;dbl&amp;gt;&lt;/span&gt; &lt;span style='color: #555555; font-style: italic;'&gt;&amp;lt;dbl&amp;gt;&lt;/span&gt; &lt;span style='color: #555555; font-style: italic;'&gt;&amp;lt;dbl&amp;gt;&lt;/span&gt; &lt;span style='color: #555555; font-style: italic;'&gt;&amp;lt;dbl&amp;gt;&lt;/span&gt; &lt;span style='color: #555555; font-style: italic;'&gt;&amp;lt;dbl&amp;gt;&lt;/span&gt; &lt;span style='color: #555555; font-style: italic;'&gt;&amp;lt;dbl&amp;gt;&lt;/span&gt;
+## &lt;span style='color: #555555;'&gt;1&lt;/span&gt;  21       6   160   110  3.9   2.62
+## &lt;span style='color: #555555;'&gt;2&lt;/span&gt;  21       6   160   110  3.9   2.88
+## &lt;span style='color: #555555;'&gt;3&lt;/span&gt;  22.8     4   108    93  3.85  2.32
+## &lt;span style='color: #555555;'&gt;4&lt;/span&gt;  21.4     6   258   110  3.08  3.22
+## &lt;span style='color: #555555;'&gt;5&lt;/span&gt;  18.7     8   360   175  3.15  3.44
+## &lt;span style='color: #555555;'&gt;# … with 27 more rows, and 5 more&lt;/span&gt;
+## &lt;span style='color: #555555;'&gt;#   variables: qsec &amp;lt;dbl&amp;gt;, vs &amp;lt;dbl&amp;gt;,&lt;/span&gt;
+## &lt;span style='color: #555555;'&gt;#   am &amp;lt;dbl&amp;gt;, gear &amp;lt;dbl&amp;gt;, carb &amp;lt;dbl&amp;gt;&lt;/span&gt;
+&lt;/CODE&gt;&lt;/PRE&gt;
+
+]
+
+.pull-right-50[
+
+
+### readr
+.pull-left-50[
+- `read_csv()`
+- `read_csv2()`
+- `read_delim()`
+- `read_tsv()`
+]
+
+.pull-right-50[
+- `write_csv()`
+- `write_csv2()`
+- `write_delim()`
+- `write_tsv()`
+]
+
+### Pipes
+
+.pull-left-50[
+- magrittr `%&gt;%`
+
+```r
+mtcars %&gt;% 
+  group_by(cyl) %&gt;% 
+  count()
+```
+
+]
+
+.pull-right-50[
+- native R `|&gt;`
+
+```r
+mtcars |&gt;
+  group_by(cyl) |&gt;
+  count()
+```
+]
+
+]
+
+---
+class: size-small
+# Data Wrangling
+
+.pull-left-50[
+### dplyr 
+
+Manipulate Columns
+
+- `mutate()`, compute new columns
+- `rename()`, rename columns
+- `select()`, select columns
+
+Manipulate Rows
+
+- `filter()`, select rows by logical criteria
+- `slice()`, select rows by position
+- `arrange()`, order rows
+
+Group Cases
+
+- `group_by()`, group by columns values
+- `ungroup()`, return ungrouped data
+]
+
+.pull-right-50[
+
+.color-white[
+### dplyr
+]
+
+Summarise Cases
+
+- `summarise()`, compute by group values
+- `count()`, get size groups
+
+Combine Tables
+
+- `bind_cols()`, bind tibble by columns
+- `bind_rows()`, bind tibble by rows
+
+### tidyr
+
+- `pivot_longer()`, from wide to long data
+- `pivot_wider()`, from long to wide data
+
+]
+
+---
+class: size-small
+# Data Wrangling
+
+.pull-left-50[
+
+### forcats
+
+- `fct_relevel()`, manually reorder factor levels
+- `fct_reorder()`, reorder levels by other variable
+- `fct_rev()`, reverse level order
+- `fct_recode()`, manually change labels
+
+### stringr
+
+- `str_detect()`, detect match in string
+- `str_count()`, count matches in string
+- `str_replace()`, replace first match
+- `str_replace_all()`, replace all matches
+- `str_extract()`, return first match
+- `str_extract_all()`, return all matches
+- `str_split()`, split string by pattern
+
+]
+
+.pull-right-50[
+
+
+### lubridate
+
+Types of data/time data
+
+- *date*, number of days since 1970-01-01
+- *date-time*, number of seconds since 1970-01-01 00:00:00 UTC
+
+Time spans:
+
+- *Durations*, record exact number of seconds 
+- *Periods*, record time in *“human”* units
+- *Intervals*, spans between a precise points
+
+### purrr
+
+- `map()` apply function to each element
+- `map2()` apply function to pairs of elements
+- `pmap()` apply function to groups of elements
+]
+---
+class: size-small
+# ggplot2
+
+.pull-left-50[
+
+```r
+ggplot(data = , aes())
+```
+
+### Geoms
+
+.pull-left-50[
+One variable
+
+- `geom_density()`
+- `geom_histogram()`
+- `geom_bar()`
+
+Two variables
+
+- `geom_point()`
+- `geom_line()`
+- `geom_boxplot()`
+- `geom_violin()`
+- `geom_density_2d()`
+]
+.pull-right-50[
+Other
+
+- `geom_ribbon()`
+- `geom_rug()`
+- `geom_text()`
+- `geom_errorbar()`
+
+Aes and options
+
+- `color`/`fill`
+- `linetype` 
+- `shape`
+- `size`
+- `alpha`
+]
+]
+
+.pull-right-50[
+### Other Settings
+.pull-left-50[
+
+Facets
+
+- `facet_grid()`
+- `facet_wrap()`
+
+Scales
+
+- `scale_*_continous()`
+- `scale_*_discrete()`
+- `scale_*_manual()`
+
+Coordinate
+
+- `xlim()`/`ylim()`
+- `lims()`
+- `coord_cartesian()`
+- `coord_flip()`
+
+]
+.pull-right-50[
+
+Labels and legend
+
+- `xlab()`/`ylab()`
+- `ggtitle()`
+- `labs()`
+- `annotate()`
+- `guides()`
+
+Themes
+
+- `theme_bw()`
+- `theme_classic()`
+- `theme_minimal()`
+- `theme_void()`
+- `theme(&lt;custom&gt;)`
+]
+]
+
+---
+class:size-small
+
+# ggplot2
+
+.pull-left-50[
+
+
+```r
+ggplot(mtcars, aes(x = mpg)) +
+  ggdist::stat_halfeye(
+    adjust = .5, .width = 0, 
+    justification = -.2, point_colour = NA,
+    fill = "#46ACC8", alpha = .7
+    ) +
+  geom_boxplot(
+    fill = "#46ACC8", alpha = .4, width = .25
+    colour = "#46ACC8", outlier.shape = NA
+    ) +
+  geom_point(
+    aes(y = 0), size = 1.3,alpha = .3,
+    position = position_jitter(seed = 1,
+                               height = .1)
+    ) +
+  theme_bw() +
+  theme(axis.title.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())
+```
+]
+.pull-right-50[
+
+&lt;br&gt;
+
+&lt;br&gt;
+
+&lt;img src="05-R-tidyverse_files/figure-html/unnamed-chunk-10-1.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+class: end, middle, center
+
+# Thanks!
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>`\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
