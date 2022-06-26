@@ -49,8 +49,16 @@
 
 /*----    Slide Theme    ----*/
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     color: #8C3031;
+}
+
+h4 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  font-size: 20pt;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 a:-webkit-any-link {
@@ -118,9 +126,26 @@ blockquote {
   font-size: 25pt;
 }
 
+/*---- code ----*/
+code, pre{
+  background: #f8f8f8;
+}
+
+.remark-code-line-highlighted {
+    background-color: transparent;
+}
+
+/*---- example ----*/
+
+example,
+
+.example h1, .example h2, .example h3, .example h4 {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
 /*---- size-small ----*/
 
-.size-small li, .size-small p, .size-small td{
+.size-small li, .size-small p, .size-small td, .size-small code {
   font-size: 14pt;
 }
 
@@ -130,6 +155,7 @@ blockquote {
 
 .size-small table {
   margin-top: 20pt;
+  font-size: 14pt;
 }
 /*----  end  ----*/
 

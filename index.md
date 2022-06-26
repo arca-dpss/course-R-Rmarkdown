@@ -66,6 +66,8 @@ R:
 
 R Markdown:
 
+- [06 Rmd Basic](files/slides/06-Rmaarkdown-basics.Rmd)
+
 ### Books
 
 - *“Introduction to R: Corso per imparare le basi di R”* by Claudio Zandonella and Filippo Gambarota
@@ -81,8 +83,8 @@ Other Books on R
 
 Other Books on R Markdown
 
-- *“papaja: Reproducible APA manuscripts with R Markdown”* by Frederik Aust and Marius Barth ([link](http://frederikaust.com/papaja_man/))
 - *“bookdown: Authoring Books and Technical Documents with R Markdown”* by Yihui Xie ([link](https://bookdown.org/yihui/bookdown/))
+- *“papaja: Reproducible APA manuscripts with R Markdown”* by Frederik Aust and Marius Barth ([link](http://frederikaust.com/papaja_man/))
 
 
 ### Other Links

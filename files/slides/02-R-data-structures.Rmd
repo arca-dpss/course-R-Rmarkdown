@@ -292,7 +292,7 @@ class: size-small
 
 ---
 class: size-small
-# Factor
+# Factors
 
 .pull-left-50[
 ### Creating
