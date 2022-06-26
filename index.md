@@ -66,7 +66,7 @@ R:
 
 R Markdown:
 
-- [06 Rmd Basic](files/slides/06-Rmaarkdown-basics.Rmd)
+- [06 Rmd Basic](files/slides/06-Rmarkdown-basics.html)
 
 ### Books
 
