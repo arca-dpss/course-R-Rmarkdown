@@ -167,10 +167,11 @@ class: size-small
 - Choose the output at the beginning 
 - Different syntax according to output
 
-```
+
+```r
 colorize &lt;- function(x, color) {
   if (knitr::is_latex_output()) {
-    sprintf("\\textcolor{&amp;#37;s}{&amp;#37;s}", color, x)
+    sprintf("\\textcolor{ %s }{ %s }", color, x)
   } else if (knitr::is_html_output()) {
     sprintf("&lt;span style='color: %s;'&gt;%s&lt;/span&gt;",
             color, x)
