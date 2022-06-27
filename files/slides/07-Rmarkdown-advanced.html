@@ -167,7 +167,16 @@ class: size-small
 - Choose the output at the beginning 
 - Different syntax according to output
 
-
+```
+colorize &lt;- function(x, color) {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("&lt;span style='color: %s;'&gt;%s&lt;/span&gt;",
+            color, x)
+  } else x
+}
+```
 
 `` `r colorize("some words in red", "red")` ``
 
