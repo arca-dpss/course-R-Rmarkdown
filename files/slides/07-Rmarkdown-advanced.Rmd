@@ -127,7 +127,7 @@ https://www.w3schools.com/css/
 
 ---
 class: size-small
-# $\LaTeX$
+# LaTeX
 
 .pull-left-50[
 ```{r, eval= FALSE, echo = TRUE}
@@ -142,7 +142,7 @@ output:
 ---
 ```
 
-#### Raw $\LaTeX$
+#### Raw LaTeX
 
 ```latex
 \documentclass{article}
@@ -157,7 +157,7 @@ Color \textcolor{red}{word}
 ]
 
 .pull-right-50[
-#### $\LaTeX$ Syntax
+#### LaTeX Syntax
 
 https://www.overleaf.com/learn
 
