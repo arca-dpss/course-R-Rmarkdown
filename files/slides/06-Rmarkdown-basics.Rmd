@@ -390,7 +390,7 @@ includes:<br>
 - keep_md 
 - css 
 
-#### LaTeX Options
+#### $\LaTeX$ Options
 
 - keep_tex
 - documentclass
@@ -424,7 +424,7 @@ class: size-small
 - `output:pdf_document`, document
 - `output:beamer_presentation`, slides
 
-To get pdf outputs we need LaTeX.<br>Easiest way is to use `tinytex`
+To get pdf outputs we need $\LaTeX$<br>Easiest way is to use `tinytex`
 
 ```{r, echo=TRUE, eval=FALSE}
 tinytex::install_tinytex()
@@ -571,10 +571,10 @@ ggplot(...)+
 - `fig.align`, values `'left'`, `'right'`, `'center'`
 - `fig.cap`, figure caption
 
-#### Extra LaTeX
+#### Extra $\LaTeX$
 - `fig.pos`, values `'h'` (here), `'t'` (top), `'b'` (bottom), `'H'` (HERE need `\usepackage{float}`) 
 - `fig.scap`, short caption for list
-- `sanitize`, escape special LaTeX characters
+- `sanitize`, escape special $\LaTeX$ characters
 ]
 
 ---
@@ -656,7 +656,7 @@ P(H|D) = \frac{P(H)\ P(D|H)}{P(D)}
 $$
 
 - All math symbols ([link]( https://artofproblemsolving.com/wiki/index.php/LaTeX:Symbols))
-- LaTeX math syntax ([link](https://www.overleaf.com/learn/latex/Mathematical_expressions))
+- $\LaTeX$ math syntax ([link](https://www.overleaf.com/learn/latex/Mathematical_expressions))
 - In text reference (bookdown) `\@ref(eq:<tag-equation>)`
 - Do not use underscore (`"_"`) in the tag-name
 ]
