@@ -67,6 +67,7 @@ R:
 R Markdown:
 
 - [06 Rmd Basic](files/slides/06-Rmarkdown-basics.html)
+- [07 Rmd Advanced](files/slides/07-Rmarkdown-advanced.html)
 
 ### Books
 
@@ -83,6 +84,7 @@ Other Books on R
 
 Other Books on R Markdown
 
+- *“R Markdown: The Definitive Guide”* by Yihui Xie, J. J. Allaire, and Garrett Grolemund ([link](https://bookdown.org/yihui/rmarkdown/))
 - *“bookdown: Authoring Books and Technical Documents with R Markdown”* by Yihui Xie ([link](https://bookdown.org/yihui/bookdown/))
 - *“papaja: Reproducible APA manuscripts with R Markdown”* by Frederik Aust and Marius Barth ([link](http://frederikaust.com/papaja_man/))
 
