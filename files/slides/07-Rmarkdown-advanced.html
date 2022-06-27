@@ -96,7 +96,7 @@ https://www.w3schools.com/css/
 
 ---
 class: size-small
-# LaTeX
+# `\(\LaTeX\)`
 
 .pull-left-50[
 
@@ -112,7 +112,7 @@ output:
 ---
 ```
 
-#### Raw LaTeX
+#### Raw `\(\LaTeX\)`
 
 ```latex
 \documentclass{article}
@@ -127,7 +127,7 @@ Color \textcolor{red}{word}
 ]
 
 .pull-right-50[
-#### LaTeX Syntax
+#### `\(\LaTeX\)` Syntax
 
 https://www.overleaf.com/learn
 
@@ -168,16 +168,6 @@ class: size-small
 - Different syntax according to output
 
 
-```r
-colorize &lt;- function(x, color) {
-  if (knitr::is_latex_output()) {
-    sprintf("\\textcolor{%s}{%s}", color, x)
-  } else if (knitr::is_html_output()) {
-    sprintf("&lt;span style='color: %s;'&gt;%s&lt;/span&gt;",
-            color, x)
-  } else x
-}
-```
 
 `` `r colorize("some words in red", "red")` ``
 
