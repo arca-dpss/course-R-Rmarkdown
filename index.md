@@ -92,7 +92,9 @@ Other Books on R Markdown
 ### Other Links
 
 - RStudio Cheatsheets ([link](https://www.rstudio.com/resources/cheatsheets/))
-- Overleaf Documentation ([link](https://www.overleaf.com/learn))
+- HTML tutorial ((link)[https://www.w3schools.com/html/])
+- CSS tutorial ((link)[https://www.w3schools.com/css/])
+- $\LaTeX$ Overleaf Documentation ([link](https://www.overleaf.com/learn))
 
 - [TODO: add useful links]
 

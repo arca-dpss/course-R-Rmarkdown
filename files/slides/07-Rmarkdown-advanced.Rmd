@@ -232,13 +232,15 @@ knitr::include_graphics("images/papja.png")
 
 ---
 class: size-small
-# trackdown - Collaborative Editing
+# trackdown - Collaborative Wrinting
+
+https://claudiozandonella.github.io/trackdown/
 
 ```{r, echo = TRUE, eval=FALSE}
 install.packages("trackdown")
 ```
 
-```{r, out.width="80%"}
+```{r, out.width="75%"}
 knitr::include_graphics("images/trackdown-workflow.png")
 ```
 
