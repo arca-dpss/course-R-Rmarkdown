@@ -1,5 +1,5 @@
 ---
-title: "Exercises Data Structure"
+title: "Exercises R Functions"
 subtitle: "Elements of R e R Markdown"
 author: "Claudio Zandonella"
 institute: ""
