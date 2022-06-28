@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Exercises Data Structure</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Claudio Zandonella" />
+    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="libs/freezeframe-5.0.2/freezeframe.min.js"></script>
+    <script src="libs/xaringanExtra-freezeframe-0.0.1/freezeframe-init.js"></script>
+    <script id="xaringanExtra-freezeframe-options" type="application/json">{"selector":"img[src$=\"gif\"]","trigger":"click","overlay":false,"responsive":true,"warnings":true}</script>
+    <link rel="stylesheet" href="assets/custom-presentation.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Exercises Data Structure
+]
+.subtitle[
+## Elements of R e R Markdown
+]
+.author[
+### Claudio Zandonella
+]
+
+---
+
+
+
+
+class: size-small
+# Operators
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+
+1. Compute `\(\frac{(45+21)^3+\frac{3}{4}}{\sqrt{32-\frac{12}{17}}}\)`.
+1. Compute `\(\frac{\sqrt{7-\pi}}{3\ (45-34)}\)`.
+1. Define a proposition to evaluate if a number is even.
+1. Define a proposition to evaluate if a number is between -4 and -2 or between 2 and 4.
+1. Compare the returned results by&lt;br&gt; `4 ^ 3 %in% c(2,3,4)` and &lt;br&gt;`4 * 3 %in% c(2,3,4)`.
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+1. Which is the difference between `==` and `all.equal()`?
+1. Compare the returned results by `TRUE &amp; NA` and `FALSE &amp; NA`
+1. Compare the returned results by `TRUE | NA` and `FALSE | NA`
+1. Which is the difference between `&amp;` (o `|`) and&lt;br&gt; `&amp;&amp;` (o `||`)?
+1. Do you know the functions `isTRUE()` and `isFALSE()`?
+]
+
+---
+class: size-small
+# Vectors
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+Creation (`?seq()` and `?rep()`)
+
+1. Create `x` with all even numbers between 1 e 25 .
+1. Create `y` with the first 10 multiples of 7 starting from 14.
+1. Create `a` with the letters `"A"`,`"B"` e `"C"` repeated in the same order 4 times.
+1. Create `b` with the letters `"A"`,`"B"` e `"C"` each one repeated 4 times.
+
+Selection
+
+1. From `x`, select the values 8, 12, and 16.
+1. From `y`, select values smaller than 36 or grater than 54.
+1. Create `c` from `a` removing all `"B"` elements.
+1. Crate `d` from `b` substituting all `"B"` with `"D"`.
+
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+1. What do you know about named vectors?
+1. Why we have both integer and double vectors?
+1. Do you know the function `which()`?
+1. Which is the meaning of `mean()` and `sum()` on logical vectors.
+1. Do you know the functions `any()` and `all()`?
+1. Which data type is `NA`?
+1. Check the length of vectors with `NA` or with `NULL` values.
+]
+
+---
+class: size-small
+
+# Factors
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+1. Create the factor `gender` as follows,
+    
+    ```
+    ## [1] M F M F M F F F M
+    ## Levels: F M
+    ```
+1. Rename levels in `"Males"` and `"Females"`
+1. Create the factor `size` as follows,
+    
+    ```r
+    c("Small", "Large", "Medium", 
+      "X-Large", "X-Small")
+    ```
+1. Make `size` an ordered factor, with appropriate label order.
+]
+
+.pull-right-50[
+#### For Coding Monkeys 🐒
+
+1. How can you get an object attributes?
+1. What do you know about classes?
+1. Check the data type of a factor?
+1. Why a factor vector is better than a string vector?
+1. Create a factor `grade` as follows,
+    
+    ```
+    ## [1] 5 4 3 3 5 4 4
+    ```
+    and convert back to numeric.
+]
+
+---
+class: size-small
+
+# Matrices
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+#### Creating
+
+1. Create the matrix `A` as follows, 
+
+$$
+`\begin{matrix}
+2 &amp; 34 &amp; 12 &amp; 7\\
+46 &amp; 93 &amp; 27 &amp; 99\\
+23  &amp; 38 &amp; 7 &amp; 04
+\end{matrix}`
+$$
+1. Create the matrix `B`4X3 in which `"A"`,`"B"` e `"C"` are repeated at each row.
+
+#### Selecting
+
+1. From `A`, select the value 27.
+1. From `B`, select the elements between the second and forth row, second and third column.
+1. Form `A`, select only odd values.
+1. From `B`, select all values different from `"C"`. 
+]
+
+.pull-right-50[
+#### For Coding Monkeys 🐒
+
+1. Create a 5x5 matrix with named columns and rows.
+1. Try different selections using names. 
+1. A vector is a column vector or a row vector?
+1. Selecting a column returns a vector or a matrix?
+1. Check the different uses of `diag()`.
+1. Do you know the function `array()`?
+
+]
+
+---
+class: size-small
+
+# Dataframe
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+Creating
+
+1. Create the following dataframe
+
+
+```
+##       Id age gender item_1 item_2 item_3
+## 1 subj_1  21      F      2      0      2
+## 2 subj_2  23      M      1      2      0
+## 3 subj_3  19      F      1      1      1
+```
+
+Selecting
+
+1. Select data of `"subj_3"`.
+1. Select only the answers to the items.
+1. Select `Id` and `gender` for subject with `1` at `item_1`.
+]
+
+.pull-right-50[
+#### For Coding Monkeys 🐒
+
+1. Check the options `stringsAsFactors` in the function `data.frame()`.
+1. Transform the dataframe from the wide-format to the long-format.
+1. Comment the different results obtained by `data_wide$Id`,&lt;br&gt; `class(data_wide[, "Id"])`, and&lt;br&gt; `class(data_wide["Id"])`
+
+]
+
+---
+class: size-small
+
+# Lists
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+Creating
+
+1. Create a list with the elements form the previous exercises:
+  - vector `x`
+  - matrix `A`
+  - dataframe
+
+Selecting
+
+1. Select the vector and the matrix from the list.
+1. Extract the dataframe from the list.
+1. Add the sting `"Hello World!"` to the list.
+]
+
+.pull-right-50[
+#### For Coding Monkeys 🐒
+
+1. Select the age value `23` from the dataframe in the list in  single command. 
+1. Crete an unnamed list.
+1. Add names to an unnamed list.
+1. Comment the different results obtained by `length(c(list(a = 1), b = NULL))` and
+`length(list(a = 1, b = NULL))`.
+
+]
+
+---
+class: end, middle, center
+
+# Thanks!
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true,
+"ratio": "16:9",
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>`\n"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

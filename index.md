@@ -69,6 +69,10 @@ R Markdown:
 - [06 Rmd Basic](files/slides/06-Rmarkdown-basics.html)
 - [07 Rmd Advanced](files/slides/07-Rmarkdown-advanced.html)
 
+### Exercises
+
+- [R Data Structure](files/slides/ex-01-R-data-structure.html)
+
 ### Books
 
 - *“Introduction to R: Corso per imparare le basi di R”* by Claudio Zandonella and Filippo Gambarota

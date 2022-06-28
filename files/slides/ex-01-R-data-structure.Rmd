@@ -1,0 +1,277 @@
+---
+title: "Exercises Data Structure"
+subtitle: "Elements of R e R Markdown"
+author: "Claudio Zandonella"
+institute: ""
+output:
+  xaringan::moon_reader:
+    css: ["assets/custom-presentation.css", "default-fonts", "default"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+      ratio: '16:9'
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>`
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+options(crayon.enabled = TRUE)
+
+old.hooks <- fansi::set_knit_hooks(knitr::knit_hooks)
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+## ggplot settings
+theme_set(theme_bw()+
+            theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+tryCatch(
+    devtools::load_all("../../"),
+    error = function(x){
+      devtools::load_all()
+      })
+```
+
+class: size-small
+# Operators
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+
+1. Compute $\frac{(45+21)^3+\frac{3}{4}}{\sqrt{32-\frac{12}{17}}}$.
+1. Compute $\frac{\sqrt{7-\pi}}{3\ (45-34)}$.
+1. Define a proposition to evaluate if a number is even.
+1. Define a proposition to evaluate if a number is between -4 and -2 or between 2 and 4.
+1. Compare the returned results by<br> `4 ^ 3 %in% c(2,3,4)` and <br>`4 * 3 %in% c(2,3,4)`.
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+1. Which is the difference between `==` and `all.equal()`?
+1. Compare the returned results by `TRUE & NA` and `FALSE & NA`
+1. Compare the returned results by `TRUE | NA` and `FALSE | NA`
+1. Which is the difference between `&` (o `|`) and<br> `&&` (o `||`)?
+1. Do you know the functions `isTRUE()` and `isFALSE()`?
+]
+
+---
+class: size-small
+# Vectors
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+Creation (`?seq()` and `?rep()`)
+
+1. Create `x` with all even numbers between 1 e 25 .
+1. Create `y` with the first 10 multiples of 7 starting from 14.
+1. Create `a` with the letters `"A"`,`"B"` e `"C"` repeated in the same order 4 times.
+1. Create `b` with the letters `"A"`,`"B"` e `"C"` each one repeated 4 times.
+
+Selection
+
+1. From `x`, select the values 8, 12, and 16.
+1. From `y`, select values smaller than 36 or grater than 54.
+1. Create `c` from `a` removing all `"B"` elements.
+1. Crate `d` from `b` substituting all `"B"` with `"D"`.
+
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+1. What do you know about named vectors?
+1. Why we have both integer and double vectors?
+1. Do you know the function `which()`?
+1. Which is the meaning of `mean()` and `sum()` on logical vectors.
+1. Do you know the functions `any()` and `all()`?
+1. Which data type is `NA`?
+1. Check the length of vectors with `NA` or with `NULL` values.
+]
+
+---
+class: size-small
+
+# Factors
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+1. Create the factor `gender` as follows,
+    ```{r, echo=FALSE}
+    factor(c(rep(c("M","F"),3),"F","F","M"))
+    ```
+1. Rename levels in `"Males"` and `"Females"`
+1. Create the factor `size` as follows,
+    ```{r, echo=TRUE, eval = FALSE}
+    c("Small", "Large", "Medium", 
+      "X-Large", "X-Small")
+    ```
+1. Make `size` an ordered factor, with appropriate label order.
+]
+
+.pull-right-50[
+#### For Coding Monkeys 🐒
+
+1. How can you get an object attributes?
+1. What do you know about classes?
+1. Check the data type of a factor?
+1. Why a factor vector is better than a string vector?
+1. Create a factor `grade` as follows,
+    ```{r, echo=FALSE}
+    c(5, 4, 3, 3, 5, 4, 4)
+    ```
+    and convert back to numeric.
+]
+
+---
+class: size-small
+
+# Matrices
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+#### Creating
+
+1. Create the matrix `A` as follows, 
+
+$$
+\begin{matrix}
+2 & 34 & 12 & 7\\
+46 & 93 & 27 & 99\\
+23  & 38 & 7 & 04
+\end{matrix}
+$$
+1. Create the matrix `B`4X3 in which `"A"`,`"B"` e `"C"` are repeated at each row.
+
+#### Selecting
+
+1. From `A`, select the value 27.
+1. From `B`, select the elements between the second and forth row, second and third column.
+1. Form `A`, select only odd values.
+1. From `B`, select all values different from `"C"`. 
+]
+
+.pull-right-50[
+#### For Coding Monkeys 🐒
+
+1. Create a 5x5 matrix with named columns and rows.
+1. Try different selections using names. 
+1. A vector is a column vector or a row vector?
+1. Selecting a column returns a vector or a matrix?
+1. Check the different uses of `diag()`.
+1. Do you know the function `array()`?
+
+]
+
+---
+class: size-small
+
+# Dataframe
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+Creating
+
+1. Create the following dataframe
+
+```{r, echo = FALSE}
+data_wide<-data.frame(Id = c("subj_1","subj_2","subj_3"),
+                      age = c(21,23,19),
+                      gender = c("F","M","F"),
+                      item_1 = c(2,1,1),
+                      item_2 = c(0,2,1),
+                      item_3 = c(2,0,1))
+data_wide
+```
+
+Selecting
+
+1. Select data of `"subj_3"`.
+1. Select only the answers to the items.
+1. Select `Id` and `gender` for subject with `1` at `item_1`.
+]
+
+.pull-right-50[
+#### For Coding Monkeys 🐒
+
+1. Check the options `stringsAsFactors` in the function `data.frame()`.
+1. Transform the dataframe from the wide-format to the long-format.
+1. Comment the different results obtained by `data_wide$Id`,<br> `class(data_wide[, "Id"])`, and<br> `class(data_wide["Id"])`
+
+]
+
+---
+class: size-small
+
+# Lists
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+Creating
+
+1. Create a list with the elements form the previous exercises:
+  - vector `x`
+  - matrix `A`
+  - dataframe
+
+Selecting
+
+1. Select the vector and the matrix from the list.
+1. Extract the dataframe from the list.
+1. Add the sting `"Hello World!"` to the list.
+]
+
+.pull-right-50[
+#### For Coding Monkeys 🐒
+
+1. Select the age value `23` from the dataframe in the list in  single command. 
+1. Crete an unnamed list.
+1. Add names to an unnamed list.
+1. Comment the different results obtained by `length(c(list(a = 1), b = NULL))` and
+`length(list(a = 1, b = NULL))`.
+
+]
+
+---
+class: end, middle, center
+
+# Thanks!
