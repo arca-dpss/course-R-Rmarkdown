@@ -145,21 +145,6 @@ class: size-small
 ]
 
 ---
-class: size-small
-# Operators
-
-.pull-left-50[
-#### For Coding Pinguins 🐧
-
-]
-
-.pull-right-50[
-
-#### For Coding Monkeys 🐒
-
-]
-
----
 class: end, middle, center
 
 # Thanks!
