@@ -1,0 +1,165 @@
+---
+title: "Exercises Data Structure"
+subtitle: "Elements of R e R Markdown"
+author: "Claudio Zandonella"
+institute: ""
+output:
+  xaringan::moon_reader:
+    css: ["assets/custom-presentation.css", "default-fonts", "default"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: true
+      ratio: '16:9'
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>`
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("kableExtra")
+
+# Chunks settings
+knitr::opts_chunk$set(echo = FALSE,
+                      # Plot settings
+                      fig.align='center', dpi = 500,
+                      # dev = "tikz", dev.args=list(pointsize=12),
+                      # fig.height=3, fig.width=5, fig.pos = "!ht",
+
+                      # Code output width
+                      # comment = NA, prompt = TRUE,
+                      collapse = TRUE,
+
+                      # Cache options
+                      cache = FALSE, autodep=TRUE)
+
+# Console output width
+options(width = 80)
+
+options(crayon.enabled = TRUE)
+
+old.hooks <- fansi::set_knit_hooks(knitr::knit_hooks)
+# Option KableExtra
+# options(knitr.kable.NA = '')
+
+## ggplot settings
+theme_set(theme_bw()+
+            theme(text = element_text(size=12)))
+
+
+options(htmltool.dir.version = FALSE)
+xaringanExtra:::use_freezeframe()
+
+tryCatch(
+    devtools::load_all("../../"),
+    error = function(x){
+      devtools::load_all()
+      })
+```
+
+class: size-small
+# Functions
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+1. Define a function to transform temperature from Fahrenheit to Celsius
+    $$
+    Fahrenheit = Celsius *1.8 + 32
+    $$
+1. Define a function `n_and_media()` that given a numeric vector returns the number of elements and the vector mean in a nicely formatted sentence
+    > `The length is...`<br>`The mean is  ...`
+1. Define a function that compute the product between two values. Values need to be interactively defined by the user using `readline()`.
+
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+
+1. What is the difference between `<-` and `<<-`.
+1. Check the function from the family `match.*()`.
+1. What is the meaning and use of `...` as argument?
+1. What do you know about classes and methods?
+
+]
+
+---
+class: size-small
+
+# Conditional Programming
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+1. Create a function that indicate whether  number is even or odd.
+1. Define a function that assign a mark according to percentage of correct answers
+  > F $<$ .55 <br>
+  > .55 $<=$  E $<$ .65 <br>
+  > .65 $<=$ D $<$ .75  <br>
+  > .75 $<=$ C $<$ .85 <br>
+  > .85 $<=$ B $<$ .95 <br>
+  > .95 $<=$ A
+
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+1. Check the function `ifelse()`
+1. Check the function `switch()`.
+]
+
+---
+class: size-small
+# Iterative Programming
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+1. Crete a function that computes the mean of a numeric vector.
+1. Crete a function that returns the min and the max of a numeric vector.
+1. Crete a function that computes the median of a numeric vector.
+
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+1. Check the command `next` and `break`.
+1. A tennis match can be summarized with a vector of type `c("A", "B", "B", "A", ...)` indicating who scored the point. Define a function to determine the match winner.
+1. Define a function that approximate the value of $\pi$ allowing too change the desires precision. Hint: The area of a circle can be computed as the proportions of points in a square which distance from the center is less than the radius.
+    - Generate n random points uniformly distributed.
+    - Compute the proportion of points within the circle.
+    - Compute the circle area.
+    - Compute $\pi$.
+]
+
+---
+class: size-small
+# Operators
+
+.pull-left-50[
+#### For Coding Pinguins 🐧
+
+]
+
+.pull-right-50[
+
+#### For Coding Monkeys 🐒
+
+]
+
+---
+class: end, middle, center
+
+# Thanks!

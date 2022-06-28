@@ -72,6 +72,7 @@ R Markdown:
 ### Exercises
 
 - [R Data Structure](files/slides/ex-01-R-data-structure.html)
+- [R Functions](files/slides/ex-02-R-functions.html)
 
 ### Books
 
