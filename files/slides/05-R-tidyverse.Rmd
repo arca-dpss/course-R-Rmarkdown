@@ -374,7 +374,7 @@ ggplot(mtcars, aes(x = mpg)) +
 
 <br>
 
-```{r, out.width="95%", fig.asp=.6}
+```{r exmple-ggplot, out.width="95%", fig.asp=.6}
 ggplot(mtcars, aes(x = mpg)) +
   ggdist::stat_halfeye(adjust = .5, .width = 0, justification = -.2,
                        point_colour = NA, fill = "#46ACC8", alpha = .7) +

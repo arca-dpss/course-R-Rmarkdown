@@ -208,7 +208,7 @@ class: size-small
 ]
 
 .pull-right-50[
-```{r}
+```{r example-plot}
 data(mtcars)
 x <- 1:10/10
 y <-  2 * x + rnorm(10)
