@@ -73,6 +73,7 @@ R Markdown:
 
 - [R Data Structure](files/slides/ex-01-R-data-structure.html)
 - [R Functions](files/slides/ex-02-R-functions.html)
+- [R Data Analysis](files/slides/ex-03-R-data-analysis.html)
 
 ### Books
 
