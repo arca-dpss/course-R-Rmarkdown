@@ -75,6 +75,10 @@ R Markdown:
 - [R Functions](files/slides/ex-02-R-functions.html)
 - [R Data Analysis](files/slides/ex-03-R-data-analysis.html)
 
+### Code
+
+- [Attachment Rproj](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-R-Rmarkdown/tree/main/code/Attachment)
+
 ### Books
 
 - *“Introduction to R: Corso per imparare le basi di R”* by Claudio Zandonella and Filippo Gambarota
