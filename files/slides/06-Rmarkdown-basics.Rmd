@@ -403,7 +403,7 @@ includes:<br>
 #### Bibliography
 
 - bibliography
-- cls
+- csl
 ]
 ]
 
@@ -464,7 +464,7 @@ class:size-small
 .pull-left-50[
 ```{r, eval=FALSE, echo=TRUE}
 bibliography: <ref-file>.bib 
-cls: <custom-style>.cls
+csl: <custom-style>.csl
 ```
 
 #### `.bib` file
@@ -482,7 +482,7 @@ Reference manager as Zotero (https://www.zotero.org/)
   }
 ```
 
-#### `.cls` file
+#### `.csl` file
 
 Get required style from https://www.zotero.org/styles
 ]
