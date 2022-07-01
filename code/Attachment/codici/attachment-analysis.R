@@ -17,7 +17,6 @@ my_data <- as.data.frame(my_data)
 # Descrizione dataset
 str(my_data)
 
-# Nel presente dataset sono riportati parte dei dati riguardanti un vero proggetto di ricerca.
 # In questo studio è stata valutata nei bambini del 3° e 4° anno di scuola primaria la relazione tra:
 # 1) attaccamento verso la madre
 # 2) status socio-economico
