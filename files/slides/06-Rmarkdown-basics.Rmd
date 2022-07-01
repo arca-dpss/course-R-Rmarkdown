@@ -403,7 +403,7 @@ includes:<br>
 #### Bibliography
 
 - bibliography
-- csl
+- cls
 ]
 ]
 
@@ -464,7 +464,7 @@ class:size-small
 .pull-left-50[
 ```{r, eval=FALSE, echo=TRUE}
 bibliography: <ref-file>.bib 
-csl: <custom-style>.csl
+cls: <custom-style>.cls
 ```
 
 #### `.bib` file
