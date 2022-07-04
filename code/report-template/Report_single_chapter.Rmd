@@ -1,0 +1,104 @@
+---
+title: 'Report Template'
+subtitle: _'Single Chapter'_
+author: 'ARCA'
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  bookdown::html_document2: 
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    collapsed: false
+    css: ["css/custom.css"]
+    number_sections: true
+bibliography: bibliography.bib
+csl: apa.csl
+link-citations: true 
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+# Content Hyperlinks
+
+## Sections {#my-section}
+
+See Section \@ref(my-section)
+
+## Figures
+
+### Pictures
+
+See Figure \@ref(fig:r-logo). Note: in chunks name do not use "_" but use "-" instead.     `\@ref(fig:r_logo)` do not work, `\@ref(fig:r-logo)` works properly.
+
+```{r psicostat-logo, fig.cap = "R Logo", out.width = '33%'}
+knitr::include_graphics('figures/r-logo.png')
+```
+
+### Plots
+
+See Figure \@ref(fig:my-plot)
+
+```{r my-plot, fig.cap = "Random numbers", out.width = '50%'}
+plot(rnorm(10))
+```
+
+## Tables
+
+See r-package `kableExtra` documentation (link)[https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html] 
+
+See Table \@ref(tab:cars-table)
+
+```{r cars-table}
+data(iris)
+
+knitr::kable(iris[1:5,], caption = "Table example")
+```
+
+# Equations
+
+You can also create latex equations with cross referencing using the code as below:
+
+```
+$$
+(\#eq:normal)
+y_i \sim Normal(\mu, \sigma)
+$$
+```
+Then you can link the equation in text in the same way as figures or tables `\@ref(eq:normal)`. See the equation \@ref(eq:normal)
+
+$$
+\begin{equation} (\#eq:normal)
+y_i \sim Normal(\mu, \sigma)
+\end{equation}
+$$
+
+
+# APA cls
+
+We are using apa 7 cls format. [@rcoreteam2021] 
+
+# References {-}
+
