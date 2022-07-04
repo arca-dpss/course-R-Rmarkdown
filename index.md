@@ -78,6 +78,7 @@ R Markdown:
 ### Code
 
 - [Attachment Rproj](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-R-Rmarkdown/tree/main/code/Attachment)
+- [Report Template](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-R-Rmarkdown/tree/main/code/report-template)
 
 ### Books
 
