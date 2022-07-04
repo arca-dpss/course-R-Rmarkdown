@@ -99,7 +99,7 @@ class: size-small
 .pull-left-50[
 #### For Coding Pinguins 🐧
 
-1. Create a function that indicate whether  number is even or odd.
+1. Create a function that indicate whether a number is even or odd.
 1. Define a function that assign a mark according to percentage of correct answers
   > F $<$ .55 <br>
   > .55 $<=$  E $<$ .65 <br>
