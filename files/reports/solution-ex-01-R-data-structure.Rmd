@@ -1,0 +1,309 @@
+---
+title: "R Data Structure"
+subtitle: "Solution Exercises"
+output: 
+  bookdown::html_document2:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    collapsed: false
+    css: ["assets/css/custom_report.css"]
+linestretch: 1.5
+number_sections: true
+link-citations: true 
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, collapse = TRUE)
+```
+
+
+# Operators
+
+1. Compute $\frac{(45+21)^3+\frac{3}{4}}{\sqrt{32-\frac{12}{17}}}$.
+  <details><summary>See solution</summary>
+    ```{r}
+    ((45 + 21)^3 + 3/4)/(sqrt(32 - 12/17))
+    ```
+  </details>
+1. Compute $\frac{\sqrt{7-\pi}}{3\ (45-34)}$.
+  <details><summary>See solution</summary>
+    ```{r}
+    (sqrt(7) - pi)/(3 * (45 - 34))
+    ```
+  </details>
+1. Define a proposition to evaluate if a number is even.
+  <details><summary>See solution</summary>
+    ```{r}
+    value <- 3
+    value %% 2 == 0
+    
+    value <- 4
+    value %% 2 == 0
+    ```
+  </details>
+1. Define a proposition to evaluate if a number is between -4 and -2 or between 2 and 4.
+  <details><summary>See solution</summary>
+    ```{r}
+    value <- 3
+    abs(value) >= 2 & abs(value) <= 4
+    ```
+  </details>
+1. Compare the returned results by `4 ^ 3 %in% c(2,3,4)` and `4 * 3 %in% c(2,3,4)`.
+  <details><summary>See solution</summary>
+    ```{r}
+    4 ^ 3 %in% c(2,3,4)
+    
+    4 * 3 %in% c(2,3,4)
+    ```
+  </details>
+
+# Vectors
+
+### Creating {-}
+
+1. Create `x` with all even numbers between 1 e 25 .
+  <details><summary>See solution</summary>
+    ```{r}
+    x <- seq(from = 2, to = 25, by = 2)
+    x
+    ```
+  </details>
+1. Create `y` with the first 10 multiples of 7 starting from 14.
+  <details><summary>See solution</summary>
+    ```{r}
+    y <- seq(from = 14, by = 7, length.out = 10)
+    y
+    ```
+  </details>
+1. Create `a` with the letters `"A"`,`"B"` e `"C"` repeated in the same order 4 times.
+  <details><summary>See solution</summary>
+    ```{r}
+    a <- rep(c("A", "B", "C"), times = 4)
+    a
+    ```
+  </details>
+1. Create `b` with the letters `"A"`,`"B"` e `"C"` each one repeated 4 times.
+  <details><summary>See solution</summary>
+    ```{r}
+    b <- rep(c("A", "B", "C"), each = 4)
+    b
+    ```
+  </details>
+
+
+### Selecting {-}
+
+1. From `x`, select the values 8, 12, and 16.
+  <details><summary>See solution</summary>
+    ```{r}
+    x[c(4, 6, 8)]
+    ```
+  </details>
+1. From `y`, select values smaller than 36 or grater than 54.
+  <details><summary>See solution</summary>
+    ```{r}
+    y[y < 36 | y > 54]
+    ```
+  </details>
+1. Create `c` from `a` removing all `"B"` elements.
+  <details><summary>See solution</summary>
+    ```{r}
+    c <- a[a != "B"]
+    c
+    ```
+  </details>
+1. Crate `d` from `b` substituting all `"B"` with `"D"`.
+  <details><summary>See solution</summary>
+    ```{r}
+    d <- b
+    d[d == "B"] <- "D"
+    d
+    ```
+  </details>
+
+# Factors
+
+
+1. Create the factor `gender` as follows,
+    ```{r, echo=FALSE}
+    factor(c(rep(c("M","F"),3),"F","F","M"))
+    ```
+  <details><summary>See solution</summary>
+    ```{r}
+    gender <- factor(c("M", "F", "M", "F", "M", "F", "F", "F", "M"))
+    gender
+    ```
+  </details>
+1. Rename levels in `"Males"` and `"Females"`
+  <details><summary>See solution</summary>
+    ```{r}
+    levels(gender) <- c("Females", "Males")
+    gender
+    ```
+  </details>
+1. Create the factor `size` as follows,
+    ```{r, echo=TRUE, eval = FALSE}
+    c("Small", "Large", "Medium", "X-Large", "X-Small")
+    ```
+  <details><summary>See solution</summary>
+    ```{r}
+    size <- factor(c("Small", "Large", "Medium", "X-Large", "X-Small"))
+    size
+    ```
+  </details>
+1. Make `size` an ordered factor, with appropriate label order.
+  <details><summary>See solution</summary>
+    ```{r}
+    size <- factor(c("Small", "Large", "Medium", "X-Large", "X-Small"),
+                   levels = c("X-Small", "Small", "Medium", "Large", "X-Large"),
+                   ordered = TRUE)
+    size
+    ```
+  </details>
+
+# Matrices
+
+### Creating {-}
+
+
+1. Create the matrix `A` as follows, 
+
+$$
+\begin{matrix}
+2 & 34 & 12 & 7\\
+46 & 93 & 27 & 99\\
+23  & 38 & 7 & 04
+\end{matrix}
+$$
+  <details><summary>See solution</summary>
+    ```{r}
+    A <- matrix(c(2, 34, 12, 7, 46, 93, 27, 99, 23, 38, 7, 04),
+                ncol = 4, byrow = TRUE)
+    A
+    ```
+  </details>
+1. Create the matrix `B`4X3 in which `"A"`,`"B"` e `"C"` are repeated at each row.
+  <details><summary>See solution</summary>
+    ```{r}
+    B <-  matrix(c("A", "B", "C"), ncol = 3, nrow = 4, byrow = TRUE)
+    B
+    ```
+  </details>
+
+### Selecting {-}
+
+1. From `A`, select the value 27.
+  <details><summary>See solution</summary>
+    ```{r}
+    A[2, 3]
+    ```
+  </details>
+1. From `B`, select the elements between the second and forth row, second and third column.
+  <details><summary>See solution</summary>
+    ```{r}
+    B[2:4, c(2,3)]
+    ```
+  </details>
+1. Form `A`, select only odd values.
+  <details><summary>See solution</summary>
+    ```{r}
+    A[A %% 2 == 1]
+    ```
+  </details>
+1. From `B`, select all values different from `"C"`.
+  <details><summary>See solution</summary>
+    ```{r}
+    B[B != "C"]
+    ```
+  </details>
+
+# Dataframe
+
+### Creating {-}
+
+1. Create the following dataframe
+
+```{r, echo = FALSE}
+my_data<-data.frame(Id = c("subj_1","subj_2","subj_3"),
+                      age = c(21,23,19),
+                      gender = c("F","M","F"),
+                      item_1 = c(2,1,1),
+                      item_2 = c(0,2,1),
+                      item_3 = c(2,0,1))
+my_data
+```
+
+  <details><summary>See solution</summary>
+    ```{r}
+    my_data <- data.frame(Id = c("subj_1","subj_2","subj_3"),
+                          age = c(21,23,19),
+                          gender = c("F","M","F"),
+                          item_1 = c(2,1,1),
+                          item_2 = c(0,2,1),
+                          item_3 = c(2,0,1))
+    my_data
+    ```
+  </details>
+  
+### Selecting {-}
+
+1. Select data of `"subj_3"`.
+  <details><summary>See solution</summary>
+    ```{r}
+    my_data[my_data$Id == "subj_3", ]
+    ```
+  </details>
+1. Select only the answers to the items.
+  <details><summary>See solution</summary>
+    ```{r}
+    my_data[, c("item_1", "item_2", "item_3")]
+    ```
+  </details>
+1. Select `Id` and `gender` for subject with `1` at `item_1`.
+  <details><summary>See solution</summary>
+    ```{r}
+    my_data[my_data$item_1 == 1, c("Id", "gender")]
+    ```
+  </details>
+
+# Lists
+
+### Creating {-}
+
+1. Create a list with the elements form the previous exercises:
+  - vector `x`
+  - matrix `A`
+  - dataframe
+  <details><summary>See solution</summary>
+    ```{r}
+    my_list <- list(x = x,
+                    A = A,
+                    my_data = my_data)
+    my_list
+    ```
+  </details>
+  
+### Selecting {-}
+
+1. Select the vector and the matrix from the list.
+  <details><summary>See solution</summary>
+    ```{r}
+    my_list[1:2]
+    ```
+  </details>
+1. Extract the dataframe from the list.
+  <details><summary>See solution</summary>
+    ```{r}
+    my_list[["my_data"]]
+    ```
+  </details>
+1. Add the sting `"Hello World!"` to the list.
+  <details><summary>See solution</summary>
+    ```{r}
+    my_list$string <- "Hello World!"
+    my_list
+    ```
+  </details>
