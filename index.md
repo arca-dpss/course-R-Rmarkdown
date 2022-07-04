@@ -102,13 +102,10 @@ Other Books on R Markdown
 ### Other Links
 
 - RStudio Cheatsheets ([link](https://www.rstudio.com/resources/cheatsheets/))
-- HTML tutorial ((link)[https://www.w3schools.com/html/])
-- CSS tutorial ((link)[https://www.w3schools.com/css/])
+- HTML tutorial ([link](https://www.w3schools.com/html/))
+- CSS tutorial ([link](https://www.w3schools.com/css/))
 - LaTeX Overleaf Documentation ([link](https://www.overleaf.com/learn))
 - `trackdown`- R package for improving collaborative writing ([link](https://claudiozandonella.github.io/trackdown/))
-
-- Google Docs ([link](https://docs.google.com/document/d/1aAu7m8ID2EnKo2CyP8osEDOayWNyUsvEyTeStN4VVcY/edit?usp=sharing))
-- [TODO: add useful links]
 
 - Questionario valutazione [link](https://forms.gle/6ycuFMdDnyemD4AR6)
 
