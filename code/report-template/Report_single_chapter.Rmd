@@ -53,7 +53,7 @@ See Section \@ref(my-section)
 
 See Figure \@ref(fig:r-logo). Note: in chunks name do not use "_" but use "-" instead.     `\@ref(fig:r_logo)` do not work, `\@ref(fig:r-logo)` works properly.
 
-```{r psicostat-logo, fig.cap = "R Logo", out.width = '33%'}
+```{r r-logo, fig.cap = "R Logo", out.width = '33%'}
 knitr::include_graphics('figures/r-logo.png')
 ```
 
